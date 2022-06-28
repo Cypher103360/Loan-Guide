@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
@@ -15,7 +16,7 @@
             android:id="@+id/upload_news"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/upload_news"
             android:textAllCaps="true"
@@ -28,7 +29,7 @@
             android:id="@+id/upload_tips"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/upload_tips"
             android:textAllCaps="true"
@@ -41,7 +42,7 @@
             android:id="@+id/upload_strip_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/upload_strip_banner"
             android:textAllCaps="true"
@@ -54,7 +55,7 @@
             android:id="@+id/upload_ads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/update_ads_ids"
             android:textAllCaps="true"
@@ -67,7 +68,7 @@
             android:id="@+id/edit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/edit_data"
             android:textAllCaps="true"
@@ -80,7 +81,7 @@
             android:id="@+id/upload_loan_app_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/upload_loan_app_data"
             android:textAllCaps="true"
@@ -93,7 +94,7 @@
             android:id="@+id/show_loan_app_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/show_loan_app_data"
             android:textAllCaps="true"
@@ -106,7 +107,7 @@
             android:id="@+id/url_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/update_urls"
             android:textAllCaps="true"
@@ -119,7 +120,7 @@
             android:id="@+id/user_data_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/show_user_data"
             android:textAllCaps="false"
@@ -132,7 +133,7 @@
             android:id="@+id/update_own_text_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
             android:padding="10dp"
             android:text="@string/upload_own_title_amp_url"
             android:textAllCaps="false"
@@ -142,6 +143,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_data_btn" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/upload_ads2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:text="Update Ads IDS 2"
+            android:textAllCaps="true"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </ScrollView>
