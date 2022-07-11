@@ -153,6 +153,15 @@
             android:text="Update Ads IDS 2"
             android:textAllCaps="true"
             android:textSize="20sp" />
+        <Button
+            android:id="@+id/upload_ads3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:text="Update Ads IDS 3"
+            android:textAllCaps="true"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </ScrollView>

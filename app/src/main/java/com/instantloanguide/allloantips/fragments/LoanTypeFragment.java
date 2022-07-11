@@ -159,7 +159,7 @@ public class LoanTypeFragment extends Fragment {
                                     + ban.getImage()).into(binding.loanTypeBannerImageView);
 
                             banUrl = ban.getUrl();
-                            loading.dismiss();
+//                            loading.dismiss();
 
                         }
                         binding.loanTypeBannerImageView.setOnClickListener(v -> {

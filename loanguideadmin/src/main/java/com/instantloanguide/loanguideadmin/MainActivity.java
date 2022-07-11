@@ -164,6 +164,8 @@ public class MainActivity extends AppCompatActivity {
         });
         binding.uploadAds2.setOnClickListener(view -> {
             showUpdateLoanAdsDialog("LoanGuide2");
+        }); binding.uploadAds3.setOnClickListener(view -> {
+            showUpdateLoanAdsDialog("LoanGuide3");
         });
         binding.editBtn.setOnClickListener(view -> {
             startActivity(new Intent(this, EditActivity.class));
