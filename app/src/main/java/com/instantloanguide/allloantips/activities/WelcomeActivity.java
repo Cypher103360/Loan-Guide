@@ -41,12 +41,7 @@ public class WelcomeActivity extends AppCompatActivity {
         showAds = new ShowAds();
         getLifecycle().addObserver(showAds);
 //        AppLovinSdk.getInstance(this).getSettings().setTestDeviceAdvertisingIds(Arrays.asList("145e514e-8593-4340-9233-fd54bc54c1e1"));
-        new Handler()
-                .postDelayed(() -> {
 
-                    showAds.showBottomBanner(this, findViewById(R.id.adView_bottom));
-                    showAds.showTopBanner(this, findViewById(R.id.adView_top));
-                }, 1000);
 
         apiInterface = ApiWebServices.getApiInterface();
         binding.startBtn.setOnClickListener(view -> {
@@ -106,6 +101,12 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         IronSource.onResume(this);
+        new Handler()
+                .postDelayed(() -> {
+
+                    showAds.showBottomBanner(this, findViewById(R.id.adView_bottom));
+                    showAds.showTopBanner(this, findViewById(R.id.adView_top));
+                }, 1000);
     }
 
     @Override

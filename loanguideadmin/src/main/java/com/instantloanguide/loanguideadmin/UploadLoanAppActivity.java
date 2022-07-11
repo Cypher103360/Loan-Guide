@@ -247,30 +247,32 @@ public class UploadLoanAppActivity extends AppCompatActivity implements LoanApps
         fetchData(loanId);
 
 
-        simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
-                String itemId = loanAppModels.get(viewHolder.getAdapterPosition()).getId();
-                String imgPath = loanAppModels.get(viewHolder.getAdapterPosition()).getImg();
-                String loanIdS = loanAppModels.get(viewHolder.getAdapterPosition()).getLoanId();
-                loanAppModels.remove(viewHolder.getAdapterPosition());
-                loanAppsAdapter.updateLoanAppList(loanAppModels);
-
-                map.put("id", itemId);
-                map.put("loanId", loanIdS);
-                map.put("img", "loan_app_images/" + imgPath);
-                deleteItem(map);
-
-            }
-
-        };
-        new ItemTouchHelper(simpleCallback).attachToRecyclerView(loanAppDataLayoutBinding.editRV);
+//        simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+//            @Override
+//            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+//
+////                String itemId = loanAppModels.get(viewHolder.getAdapterPosition()).getId();
+////                String imgPath = loanAppModels.get(viewHolder.getAdapterPosition()).getImg();
+////                String loanIdS = loanAppModels.get(viewHolder.getAdapterPosition()).getLoanId();
+////                loanAppModels.remove(viewHolder.getAdapterPosition());
+////                loanAppsAdapter.updateLoanAppList(loanAppModels);
+////
+////                Log.d("contentValue", itemId + "  " + loanIdS + "  " + imgPath);
+////
+////                map.put("id", itemId);
+////                map.put("loanId", loanIdS);
+////                map.put("img", "loan_app_images/" + imgPath);
+////                deleteItem(map);
+//
+//            }
+//
+//        };
+//        new ItemTouchHelper(simpleCallback).attachToRecyclerView(loanAppDataLayoutBinding.editRV);
 
     }
 
@@ -281,6 +283,8 @@ public class UploadLoanAppActivity extends AppCompatActivity implements LoanApps
             public void onResponse(@NonNull Call<MessageModel> call, @NonNull Response<MessageModel> response) {
                 assert response.body() != null;
                 if (response.isSuccessful()) {
+                    fetchData(map.get("loanId"));
+
                     Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT).show();
@@ -297,26 +301,6 @@ public class UploadLoanAppActivity extends AppCompatActivity implements LoanApps
     }
 
     private void fetchData(String loanId) {
-//        Toast.makeText(this, "LoanId: " + loanId, Toast.LENGTH_SHORT).show();
-//
-//        loanAppViewModel = new ViewModelProvider(this, new LoanAppModelFactory(loanId, getApplication())).get(LoanAppViewModel.class);
-//        loanAppViewModel.getLoanAppDetails().observe(this, loanAppModelList -> {
-//            if (loanAppModelList != null) {
-//                loanAppModels.clear();
-//                loanAppModels.addAll(loanAppModelList.getData());
-//                for (LoanAppModel loan : loanAppModels) {
-//                    Log.d("ContentValue", loan.getTitle());
-//                }
-//            } else {
-//                Toast.makeText(this, "List is empty!", Toast.LENGTH_SHORT).show();
-//            }
-//            loanAppsAdapter.updateLoanAppList(loanAppModels);
-//
-//            loadingDialog.dismiss();
-//
-//        });
-
-
         Call<LoanAppModelList> call = apiInterface.fetchLoanAppDetails(loanId);
         call.enqueue(new Callback<LoanAppModelList>() {
             @Override
@@ -352,7 +336,11 @@ public class UploadLoanAppActivity extends AppCompatActivity implements LoanApps
         builder = new MaterialAlertDialogBuilder(this);
         builder.setTitle("Edit your Item")
                 .setMessage("Edit")
-                .setNeutralButton("CANCEL", (dialog1, which) -> {
+                .setNeutralButton("Delete", (dialog1, which) -> {
+                    map.put("id", loanAppModel.getId());
+                    map.put("loanId", loanAppModel.getLoanId());
+                    map.put("img", "loan_app_images/" + loanAppModel.getImg());
+                    deleteItem(map);
 
                 });
         builder.setPositiveButton("Edit", (dialog, which) -> updateData(loanAppModel.getLoanId(), loanAppModel));
